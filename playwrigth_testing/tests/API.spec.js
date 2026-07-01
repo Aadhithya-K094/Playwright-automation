@@ -95,7 +95,7 @@ test("/api/rc_applctn_search", async ({ request }) => {
     "https://tng2c1.tnschools.gov.in/api/rc_applctn_search",
     {
       data: {},
-      headers: { Accept: "application/json/json" },
+      headers: { Accept: "application/json" },
     },
   );
   console.log(await responsepost4.json());
@@ -137,7 +137,7 @@ test("/api/RCGrantUpdte", async ({ request }) => {
     "https://tng2c1.tnschools.gov.in/api/RCGrantUpdte",
     {
       data: {},
-      headers: { Accept: "application/json/json" },
+      headers: { Accept: "application/json" },
     },
   );
   console.log(await responsepost7.json());
@@ -150,7 +150,7 @@ test("/api/save_recommendations", async ({ request }) => {
     "https://tng2c1.tnschools.gov.in/api/save_recommendations",
     {
       data: {},
-      headers: { Accept: "application/json/json" },
+      headers: { Accept: "application/json" },
     },
   );
   console.log(await responsepost8.json());
