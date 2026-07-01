@@ -13,8 +13,8 @@ test("api/emislogin", async ({ request }) => {
     "https://tng2c2.tnschools.gov.in/emis_login/api/emislogin",
     {
       data: {
-        emis_username: "4028609",
-        emis_password: "test@123",
+        "emis_username": "4028609",
+        "emis_password": "test@123",
       },
       headers: { accept: "application/json" },
     },
