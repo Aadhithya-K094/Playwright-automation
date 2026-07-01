@@ -10,11 +10,9 @@ const { test, expect } = require("@playwright/test");
 //api/emislogin-post
 test("api/emislogin", async ({ request }) => {
   const apipost = await request.post(
-    "https://tng2c2.tnschools.gov.in/emis_login/api/emislogin",
+    "",
     {
       data: {
-        "emis_username": "4028609",
-        "emis_password": "test@123",
       },
       headers: { accept: "application/json" },
     },
