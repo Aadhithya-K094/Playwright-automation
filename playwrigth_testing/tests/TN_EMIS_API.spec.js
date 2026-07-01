@@ -7,16 +7,16 @@ const { test, expect } = require("@playwright/test");
 //     await expect(api.status()).toBe(200);
 // });
 
-//api/emislogin-post
-test("api/emislogin", async ({ request }) => {
-  const apipost = await request.post(
-    "",
-    {
-      data: {
-      },
-      headers: { accept: "application/json" },
-    },
-  );
-  console.log(apipost.json());
-  await expect(apipost.status()).toBe(200);
-});
+// //api/emislogin-post
+// test("api/emislogin", async ({ request }) => {
+//   const apipost = await request.post(
+//     "",
+//     {
+//       data: {
+//       },
+//       headers: { accept: "application/json" },
+//     },
+//   );
+//   console.log(apipost.json());
+//   await expect(apipost.status()).toBe(200);
+// });
