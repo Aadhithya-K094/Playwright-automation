@@ -162,10 +162,10 @@ test("/api/save_recommendations", async ({ request }) => {
 
 
 ///api/RCDistList
-test("/api/RCDistList", async ({ request }) => {
-  const response1 = await request.get(
-    "https://tng2c1.tnschools.gov.in/api/RCDistList",
+test.use("/api/getMasterDistrict", async ({ request }) => {
+  const response11 = await request.get(
+    "https://tng2c2.tnschools.gov.in/emis3APICode/api/getMasterDistrict",
   );
-  console.log(await response1.json());
-  expect(response1.status()).toBe(200);
+  console.log(await response11.json());
+  expect(response11.status()).toBe(200);
 });
