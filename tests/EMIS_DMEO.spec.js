@@ -34,6 +34,116 @@ test("login page", async ({ page }) => {
   );
   await expect(string).toBeVisible();
 
+   // invalid User id with space
+  const userid1= await page.locator(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[2]/input',
+  );
+  await userid1.hover();
+  await page.waitForTimeout(500);
+  await page.click('//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[2]/input');
+  await page.waitForTimeout(500);
+  await page.fill(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[2]/input',
+    "      ",
+  );
+
+
+  //invalid password field
+  const password1 = await page.locator(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
+  );
+  await password1.hover();
+  await page.waitForTimeout(500);
+  await page.click(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
+  );
+  await page.waitForTimeout(500);
+  await page.fill(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
+    "test@123",
+  );
+  await page.waitForTimeout(500);
+
+  //login button
+   await page.click(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[4]/button[1]/span',
+  );
+  await page.waitForTimeout(5000);
+
+
+   // valid User id
+  const userid2 = await page.locator(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[2]/input',
+  );
+  await userid2.hover();
+  await page.waitForTimeout(500);
+  await page.click('//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[2]/input');
+  await page.waitForTimeout(500);
+  await page.fill(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[2]/input',
+    "4028609",
+  );
+
+  //invalid password field with space
+  const password2 = await page.locator(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
+  );
+  await password2.hover();
+  await page.waitForTimeout(500);
+  await page.click(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
+  );
+  await page.waitForTimeout(500);
+  await page.fill(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
+    "    ",
+  );
+  await page.waitForTimeout(500);
+
+  //login button
+   await page.click(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[4]/button[1]/span',
+  );
+  await page.waitForTimeout(5000);
+
+
+   //invalid user id with alphabets
+  const userid3= await page.locator(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[2]/input',
+  );
+  await userid3.hover();
+  await page.waitForTimeout(500);
+  await page.click('//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[2]/input');
+  await page.waitForTimeout(500);
+  await page.fill(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[2]/input',
+    "jgfgajgvcsfyusad",
+  );
+
+  
+  // valid password field
+  const password3= await page.locator(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
+  );
+  await password3.hover();
+  await page.waitForTimeout(500);
+  await page.click(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
+  );
+  await page.waitForTimeout(500);
+  await page.fill(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
+    "test@123",
+  );
+  await page.waitForTimeout(500);
+
+  //login button
+   await page.click(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[4]/button[1]/span',
+  );
+  await page.waitForTimeout(5000);
+
+
   //User Placeholder
   const placeholder = await page.getByPlaceholder("UserName");
   console.log(placeholder);
@@ -51,9 +161,6 @@ test("login page", async ({ page }) => {
     '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[2]/input',
     "4028609",
   );
-  // await expect(await page.locator('//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[2]/input').toBeVisible());
-  // await expect(await page.locator('//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[2]/input').toBeEmpty());
-  // await expect(await page.locator('//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[2]/input').toBeEditable());
 
   //password placeholder
   const placeholder1 = await page.getByPlaceholder("Password");
@@ -75,9 +182,6 @@ test("login page", async ({ page }) => {
     "test@123",
   );
   await page.waitForTimeout(500);
-  // await expect(await page.locator('//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input').toBeVisible());
-  // await expect(await page.locator('//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input').toBeEmpty());
-  // await expect(await page.locator('//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input').toBeEditable())
 
   await page.click(
     '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[4]/button[1]/span',

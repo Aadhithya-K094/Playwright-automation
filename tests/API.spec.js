@@ -162,7 +162,7 @@ test("/api/save_recommendations", async ({ request }) => {
 
 
 ///api/RCDistList
-test.use("/api/getMasterDistrict", async ({ request }) => {
+test.only("/api/getMasterDistrict", async ({ request }) => {
   const response11 = await request.get(
     "https://tng2c2.tnschools.gov.in/emis3APICode/api/getMasterDistrict",
   );
