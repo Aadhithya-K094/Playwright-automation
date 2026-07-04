@@ -15,7 +15,9 @@ class LoginPage {
     await this.page.goto('https://emis-react-staging.tnsed.com/', { waitUntil: 'load', timeout: 90000 });
     await this.page.waitForTimeout(500);
     await this.page.setViewportSize({ width: 1500, height: 900 });
+    await this.page.waitForTimeout(500);
     await this.page.reload();
+    await this.page.waitForTimeout(500);
   }
 
   async verifyLoginPage() {
