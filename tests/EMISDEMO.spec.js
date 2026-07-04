@@ -1,14 +1,16 @@
 const { test, expect } = require("@playwright/test");
 const { request } = require("node:https");
 test("login page", async ({ page }) => {
+  test.setTimeout(90000);
+
   //goto url
   await page.goto("https://emis-react-staging.tnsed.com/", {
-    waitUtile: "networkidle",
+    waitUtile: "load", timeout: 90000
   });
   await page.waitForTimeout(500);
   await page.setViewportSize({ width: 1500, height: 900 });
 
-  await page.reload();  
+  await page.reload();
   //Verify url
   const pageurl = await page.url();
   console.log("The page url is :", pageurl);
@@ -33,8 +35,8 @@ test("login page", async ({ page }) => {
   );
   await expect(string).toBeVisible();
 
-   // invalid User id with space
-  const userid1= await page.locator(
+  // invalid User id with space
+  const userid1 = await page.locator(
     '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[2]/input',
   );
   await userid1.hover();
@@ -48,29 +50,22 @@ test("login page", async ({ page }) => {
 
 
   //invalid password field
-  const password1 = await page.locator(
-    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
-  );
+  const password1 = await page.getByRole('textbox', { name: 'User Name' });
   await password1.hover();
   await page.waitForTimeout(500);
-  await page.click(
-    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
-  );
+  await page.getByRole('textbox', { name: 'User Name' }).click();
   await page.waitForTimeout(500);
-  await page.fill(
-    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
-    "test@123",
-  );
+  await page.getByRole('textbox', { name: 'User Name' }).fill("test@123");
   await page.waitForTimeout(500);
 
   //login button
-   await page.click(
+  await page.click(
     '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[4]/button[1]/span',
   );
-  await page.waitForTimeout(5000);
+  await page.waitForTimeout(500);
 
 
-   // valid User id
+  // valid User id
   const userid2 = await page.locator(
     '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[2]/input',
   );
@@ -84,30 +79,23 @@ test("login page", async ({ page }) => {
   );
 
   //invalid password field with space
-  const password2 = await page.locator(
-    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
-  );
+  const password2 = await page.getByRole('textbox', { name: 'User Name' });
   await password2.hover();
   await page.waitForTimeout(500);
-  await page.click(
-    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
-  );
+  await page.getByRole('textbox', { name: 'User Name' }).click();
   await page.waitForTimeout(500);
-  await page.fill(
-    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
-    "    ",
-  );
+  await page.getByRole('textbox', { name: 'User Name' }).fill(jdfijdnfaje);
   await page.waitForTimeout(500);
 
   //login button
-   await page.click(
+  await page.click(
     '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[4]/button[1]/span',
   );
   await page.waitForTimeout(5000);
 
 
-   //invalid user id with alphabets
-  const userid3= await page.locator(
+  //invalid user id with alphabets
+  const userid3 = await page.locator(
     '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[2]/input',
   );
   await userid3.hover();
@@ -119,25 +107,18 @@ test("login page", async ({ page }) => {
     "jgfgajgvcsfyusad",
   );
 
-  
+
   // valid password field
-  const password3= await page.locator(
-    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
-  );
+  const password3 = await page.getByRole('textbox', { name: 'User Name' });
   await password3.hover();
   await page.waitForTimeout(500);
-  await page.click(
-    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
-  );
+  await page.getByRole('textbox', { name: 'User Name' }).click();
   await page.waitForTimeout(500);
-  await page.fill(
-    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
-    "test@123",
-  );
+  await page.getByRole('textbox', { name: 'User Name' }).fill("test@123");
   await page.waitForTimeout(500);
 
   //login button
-   await page.click(
+  await page.click(
     '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[4]/button[1]/span',
   );
   await page.waitForTimeout(5000);
@@ -167,19 +148,15 @@ test("login page", async ({ page }) => {
   await expect(placeholder1).toBeVisible("Password");
 
   //password field
-  const password = await page.locator(
-    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
-  );
+  const password = await page.getByRole('textbox', { name: 'User Name' });
   await password.hover();
   await page.waitForTimeout(500);
-  await page.click(
-    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
-  );
+  await page.getByRole('textbox', { name: 'User Name' }).click();
   await page.waitForTimeout(500);
-  await page.fill(
-    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[3]/span/input',
-    "test@123",
-  );
+  await page.
+    getByRole('textbox', { name: 'User Name' })
+    .fill("test@123");
+  
   await page.waitForTimeout(500);
 
   await page.click(
