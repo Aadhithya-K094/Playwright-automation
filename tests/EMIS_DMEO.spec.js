@@ -8,8 +8,7 @@ test("login page", async ({ page }) => {
   await page.waitForTimeout(500);
   await page.setViewportSize({ width: 1500, height: 900 });
 
-  await page.reload();
-
+  await page.reload();  
   //Verify url
   const pageurl = await page.url();
   console.log("The page url is :", pageurl);
