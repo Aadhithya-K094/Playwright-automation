@@ -12,8 +12,8 @@ test("login page", async ({ page }) => {
 
   await page.reload();
 
-    //screenshot
-  await page.screenshot({ path: 'D:/Playwright test file/tests/Screenshot' + Date.now() + 'EmisLoginPage.png'})
+  //screenshot
+  await page.screenshot({ path: 'D:/Playwright test file/tests/Screenshot' + Date.now() + 'EmisLoginPage.png' })
 
 
   //Verify url
@@ -341,7 +341,8 @@ test("login page", async ({ page }) => {
 
   await page.getByRole('button', { name: ' Attachment' }).click(); await page.waitForTimeout(500);
 
-  await page.getByRole('button', { name: 'Submit' }).click(); await page.waitForTimeout(1000);
+  await page.getByRole('button', { name: 'Submit' }).click();
+  await page.waitForTimeout(1000);
 
 
   //logout
