@@ -2,9 +2,9 @@ const { test } = require("@playwright/test");
 
 const LoginPage = require("../pages/loginPage");
 
-const data = require("../utils/test-data");
-
 const { url } = require("node:inspector");
+
+const testData = require("../utils/test-data");
 test.beforeEach(async ({page})=>{
 
     const login = new LoginPage(page);
@@ -16,30 +16,24 @@ test.beforeEach(async ({page})=>{
 
 });
 
-test("Verify Login Page", async ({page})=>{
+
+
+
+test("valid Username", async ({page})=>{
 
     const login = new LoginPage(page);
 
-    await login.verifyLoginPage();
+    await login.login(data.validUserName,data.validPassword)
 
 });
 
-
-test("Invalid Username", async ({page})=>{
+test("Invalid Password", async ({page})=>{
 
     const login = new LoginPage(page);
 
-    await login.login(data.validUserName,data.validPassword);
+    await login.login(data.invalidUserName,data.invalidPassword);
 
 });
-
-// test("Invalid Password", async ({page})=>{
-
-//     const login = new LoginPage(page);
-
-//     await login.login(data.validUser,data.invalidPassword);
-
-// });
 
 // test("Username With Spaces", async ({page})=>{
 
