@@ -1,11 +1,14 @@
 const { test, expect } = require("@playwright/test");
 const { request } = require("node:https");
 test("login page", async ({ page }) => {
-  test.setTimeout(90000);
+  // test.setTimeout(90000);\
+
+  //screenshot
+  await page.screenshot({ path: 'D:/Playwright test file/tests/Screenshot' + Date.now() + 'EmisLoginPage.png', fullPage: true })
 
   //goto url
   await page.goto("https://emis-react-staging.tnsed.com/", {
-    waitUtile: "load", timeout: 90000
+    waitUtile: "load", //timeout: 90000
   });
   await page.waitForTimeout(500);
   await page.setViewportSize({ width: 1500, height: 900 });
@@ -28,6 +31,11 @@ test("login page", async ({ page }) => {
     '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[1]/img',
   );
   await expect(logo).toBeVisible();
+
+  await page.locator(
+    '//*[@id="root"]/div/div[1]/div[2]/div[2]/div/div[1]/img',
+  ).screenshot({ path: 'tests/Screenshot' + Date.now() + 'EmisLoginPage.png', fullPage: true })
+
 
   //check string visible
   const string = await page.locator(
@@ -107,14 +115,54 @@ test("login page", async ({ page }) => {
   //login button
   await page.getByRole('button', { name: 'Login' }).click();
   await page.waitForTimeout(500);
-});
 
 
+  //forgot password
+  await page.getByRole('button', { name: 'Forgot Password' }).click();
+  await page.waitForTimeout(500);
 
-test('valid login', async ({ page }) => {
+  //lable getByText('Please Select Your User Type *')
+  const lable3 = await page.getByText('Please Select Your User Type *')
+  console.log('This is lable:', lable3)
+  await expect(lable3).toBeVisible('Please Select Your User Type *')
 
-  //goto url
-  await page.goto("https://emis-react-staging.tnsed.com/");
+  //dropdowns lists
+  const options = await page.$$('option');
+
+  for (const option of options) {
+    console.log(await option.textContent());
+  };
+
+  // select option
+  await page.getByRole('combobox').selectOption({ value: 'school' });
+  await page.waitForTimeout(500);
+
+  await page.getByRole('combobox').selectOption('teacher');
+  await page.waitForTimeout(500);
+
+
+  //Placeholder of User Name
+  const lable4 = await page.getByText('User Name *');
+  console.log("This is placeholder:", lable4);
+  await expect(lable4).toBeVisible('User Name *');
+
+  //Enter your user name 
+  await page.getByRole('textbox', { name: 'Enter User Name' }).click();
+  await page.waitForTimeout(500);
+  await page.getByRole('textbox', { name: 'Enter User Name' }).fill('4028609');
+  await page.waitForTimeout(500);
+
+  //click submit OTP
+  await page.getByRole('button', { name: 'OTP Submit' }).click();
+  await page.getByRole('textbox', { name: 'Enter User Name' }).click();
+  await page.getByRole('textbox', { name: 'Enter User Name' }).fill('402860954645454654');
+  await page.waitForTimeout(500);
+
+  await page.getByRole('button', { name: 'OTP Submit' }).click();
+
+  //back to login
+  await page.getByRole('button', { name: 'Back To Login' }).click();
+  await page.waitForTimeout(500);
 
   //label of username
   const label1 = await page.getByText('User Name *');
@@ -123,7 +171,7 @@ test('valid login', async ({ page }) => {
 
   //User Placeholder
   const placeholder = await page.getByPlaceholder("User Name");
-  console.log("This is place holder",placeholder);
+  console.log("This is place holder", placeholder);
   await expect(placeholder).toBeVisible("User Name");
 
   //User id
@@ -143,7 +191,7 @@ test('valid login', async ({ page }) => {
 
   //password placeholder
   const placeholder1 = await page.getByPlaceholder("Password");
-  console.log('This is placeholder:',placeholder1);
+  console.log('This is placeholder:', placeholder1);
   await expect(placeholder1).toBeVisible("Password");
 
   //password field
@@ -163,5 +211,6 @@ test('valid login', async ({ page }) => {
   await page.getByRole('button', { name: 'Login' }).click();
   await page.waitForTimeout(500);
 
+
   await page.close();
-});
+})
