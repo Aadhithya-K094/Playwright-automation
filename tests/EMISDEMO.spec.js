@@ -1,9 +1,9 @@
 const { test, expect } = require("@playwright/test");
 const { request } = require("node:https");
 test("login page", async ({ page }) => {
-  // test.setTimeout(90000);\
+  // test.setTimeout(90000);
 
-  //goto url
+  // goto url
   await page.goto("https://emis-react-staging.tnsed.com/", {
     waitUtile: "load", //timeout: 90000
   });
@@ -11,9 +11,8 @@ test("login page", async ({ page }) => {
   await page.setViewportSize({ width: 1500, height: 900 });
 
   await page.reload();
-
   //screenshot
-  await page.screenshot({ path: 'D:/Playwright test file/tests/Screenshot' + Date.now() + 'EmisLoginPage.png' })
+  // await page.screenshot({ path: 'D:/Playwright test file/tests/Screenshot' + Date.now() + 'EmisLoginPage.png' })
 
 
   //Verify url
@@ -213,6 +212,11 @@ test("login page", async ({ page }) => {
   await page.getByRole('button', { name: 'Login' }).click();
   await page.waitForTimeout(1000);
 
+  //second click in login button
+  await page.getByRole('button', { name: 'Login' }).click();
+  await page.waitForTimeout(1000);
+
+
   //Click Home page
   await page.getByRole('link', { name: 'Home' }).click();
   await page.waitForTimeout(1000);
@@ -349,5 +353,6 @@ test("login page", async ({ page }) => {
   await page.Logout("//span[normalize-space()='Logout']");
   await page.waitForTimeout(1000);
 
-  await page.close();
-})
+  await Context.close();
+  await browser.close();
+});

@@ -42,7 +42,10 @@ export default defineConfig({
 
         screenshot: 'only-on-failure',
 
-        video: 'on',
+        video: {
+          mode: 'on',
+          size: { width: 1920, height: 1080 }
+        },
 
         trace: 'on'
       },
