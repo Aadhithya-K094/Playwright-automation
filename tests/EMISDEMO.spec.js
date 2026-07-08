@@ -201,7 +201,7 @@ test("login page", async ({ page }) => {
   await page.waitForTimeout(500);
   await page.getByRole('textbox', { name: 'Password' }).click();
   await page.waitForTimeout(500);
-  await page.getByRole('textbox', { name: 'Password' }).fill("Test@123");
+  await page.getByRole('textbox', { name: 'Password' }).fill("Test@1234");
   await page.waitForTimeout(500);
 
   //View button
@@ -212,18 +212,10 @@ test("login page", async ({ page }) => {
   await page.getByRole('button', { name: 'Login' }).click();
   await page.waitForTimeout(1000);
 
-  //second click in login button
-  await page.getByRole('button', { name: 'Login' }).click();
-  await page.waitForTimeout(1000);
-
 
   //Click Home page
-  await page.getByRole('link', { name: 'Home' }).click();
-  await page.waitForTimeout(1000);
-
-  //Back to page
-  await page.goto('https://emis-react-staging.tnsed.com/dashboard');
-  await page.waitForTimeout(500);
+  const homepage=await page.getByRole('link', { name: 'Home' }).click();
+  await page.hover();
 
   //for loap for paragraph
   const paragraphs = await page.$$('p');

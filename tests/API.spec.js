@@ -132,7 +132,7 @@ test("/api/RCInfoByAppID", async ({ request }) => {
 });
 
 ///api/RCGrantUpdte
-test("/api/RCGrantUpdte", async ({ request }) => {
+test.only("/api/RCGrantUpdte", async ({ request }) => {
   const responsepost7 = await request.post(
     "https://tng2c1.tnschools.gov.in/api/RCGrantUpdte",
     {
