@@ -3,5 +3,8 @@
     "@playwright/test": "^1.61.1",
     "@types/node": "^26.1.0"
   },
-  "scripts": {}
+  "scripts": {},
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  }
 }
