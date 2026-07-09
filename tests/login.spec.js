@@ -8,7 +8,7 @@ import { getUsers } from "../utils/TestData.js";
 
 const users = getUsers();
 
-const URL = "https://yourwebsite.com/login";
+const URL = "https://emis-react-staging.tnsed.com/";
 
 for (const user of users) {
 

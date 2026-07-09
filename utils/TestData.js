@@ -13,3 +13,8 @@ export function getUsersFromExcel() {
 
     return users;
 }
+
+// Provide a compatible alias expected by tests
+export function getUsers() {
+    return getUsersFromExcel();
+}
