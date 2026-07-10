@@ -135,31 +135,113 @@ test("login page", async ({ page }) => {
   };
 
   // select option
-  await page.getByRole('combobox').selectOption({ value: 'school' });
-  await page.waitForTimeout(500);
-
   await page.getByRole('combobox').selectOption('teacher');
   await page.waitForTimeout(500);
 
+  await page.getByRole('combobox').selectOption({ value: 'school' });
+  await page.waitForTimeout(500);
 
-  //Placeholder of User Name
+   //label of User Name
   const lable4 = await page.getByText('User Name *');
-  console.log("This is placeholder:", lable4);
+  console.log("This is label:", lable4);
   await expect(lable4).toBeVisible('User Name *');
 
-  //Enter your user name 
+  //OTP placeholder fill User Name
+  const placeholder6 = await page.getByRole('textbox', { name: 'Enter User Name' });
+  console.log("This is placeholder:", placeholder6);
+  await expect(placeholder6).toBeVisible('Enter User Name');
+
+  //Invalid school id
   await page.getByRole('textbox', { name: 'Enter User Name' }).click();
   await page.waitForTimeout(500);
   await page.getByRole('textbox', { name: 'Enter User Name' }).fill('4028609');
   await page.waitForTimeout(500);
 
-  //click submit OTP
-  await page.getByRole('button', { name: 'OTP Submit' }).click();
   await page.getByRole('textbox', { name: 'Enter User Name' }).click();
-  await page.getByRole('textbox', { name: 'Enter User Name' }).fill('402860954645454654');
+  await page.waitForTimeout(500);
+  await page.getByRole('textbox', { name: 'Enter User Name' }).fill('4028609548494');
   await page.waitForTimeout(500);
 
+  //fill your user name 
+  await page.getByRole('textbox', { name: 'Enter User Name' }).click();
+  await page.waitForTimeout(500);
+  await page.getByRole('textbox', { name: 'Enter User Name' }).fill('          ');
+  await page.waitForTimeout(500);
   await page.getByRole('button', { name: 'OTP Submit' }).click();
+
+  //click submit OTP
+  await page.getByRole('textbox', { name: 'Enter User Name' }).click();
+  await page.waitForTimeout(500);
+  await page.getByRole('textbox', { name: 'Enter User Name' }).fill('33020700907');
+  await page.waitForTimeout(500);
+  await page.getByRole('button', { name: 'OTP Submit' }).click();
+
+  //click Request OTP
+  await page.getByRole('button', { name: 'Request OTP' }).click();
+  await page.waitForTimeout(500);
+  await page.getByRole('button', { name: 'Ok' }).click();
+  await page.waitForTimeout(500);
+
+
+  // // OTP * label
+  // const lable7 = await page.getByText('OTP *');
+  // console.log("This is placeholder:", lable7);
+  // await expect(lable7).toBeVisible('OTP *');
+
+  // // fill the OTP
+  // const placeholder7 = await page.getByRole('textbox', { name: 'Enter the OTP' });
+  // console.log("This is placeholder:", placeholder7);
+  // await expect(placeholder7).toBeVisible('Enter the OTP');
+
+  // //invalid OTP
+  // await page.getByRole('textbox', { name: 'Enter the OTP' }).click();
+  // await page.waitForTimeout(500);
+  // await page.getByRole('textbox', { name: 'Enter the OTP' }).fill('854555');
+  // await page.waitForTimeout(500);
+  // await page.getByRole('button', { name: 'Submit OTP' }).click();
+  // await page.waitForTimeout(500);
+
+  // await page.getByRole('textbox', { name: 'Enter the OTP' }).click();
+  // await page.waitForTimeout(10000);
+  // await page.getByRole('textbox', { name: 'Enter the OTP' }).fill('431740');
+  // await page.waitForTimeout(500);
+  // await page.getByRole('button', { name: 'Submit OTP' }).click();
+  // await page.waitForTimeout(500);
+
+  // // New Password * label
+  // const lable8 = await page.getByText('New Password *');
+  // console.log("This is placeholder:", lable8);
+  // await expect(lable8).toBeVisible('New Password *');
+
+  // // fill the new password
+  // const placeholder8 = await page.getByRole('textbox', { name: 'Enter the new password' });
+  // console.log("This is placeholder:", placeholder8);
+  // await expect(placeholder8).toBeVisible('fill the new password');
+
+  // await page.getByRole('textbox', { name: 'Enter the new password' }).click();
+  // await page.waitForTimeout(500);
+  // await page.getByRole('textbox', { name: 'Enter the new password' }).fill('Test@1234');
+  // await page.waitForTimeout(500);
+  // await page.locator('i').nth(3).click();
+  // await page.waitForTimeout(500);
+  // await page.locator('i').nth(4).click();
+  // await page.waitForTimeout(500);
+
+  // // Confirm password * label
+  // const lable9 = await page.getByText('Confirm Password *');
+  // console.log("This is label:", lable9);
+  // await expect(lable9).toBeVisible('Confirm Password *');
+
+  // // fill the Confirm password
+  // const placeholder9 = await page.getByText('Confirm password');
+  // console.log("This is placeholder:", placeholder9);
+  // await expect(placeholder9).toBeVisible('Confirm password');
+
+  // await page.getByRole('textbox', { name: 'Confirm password' }).click();
+  // await page.waitForTimeout(500);
+  // await page.getByRole('textbox', { name: 'Confirm password' }).fill('Test@1234');
+  // await page.getByRole('button', { name: 'Submit', exact: true }).click();
+  // await page.waitForTimeout(500);
 
   //back to login
   await page.getByRole('button', { name: 'Back To Login' }).click();
@@ -214,7 +296,7 @@ test("login page", async ({ page }) => {
 
 
   //Click Home page
-  const homepage=await page.getByRole('link', { name: 'Home' }).click();
+  const homepage = await page.getByRole('link', { name: 'Home' }).click();
   await page.hover();
 
   //for loap for paragraph
