@@ -141,7 +141,7 @@ test("login page", async ({ page }) => {
   await page.getByRole('combobox').selectOption({ value: 'school' });
   await page.waitForTimeout(500);
 
-   //label of User Name
+  //label of User Name
   const lable4 = await page.getByText('User Name *');
   console.log("This is label:", lable4);
   await expect(lable4).toBeVisible('User Name *');
@@ -176,11 +176,11 @@ test("login page", async ({ page }) => {
   await page.waitForTimeout(500);
   await page.getByRole('button', { name: 'OTP Submit' }).click();
 
-  //click Request OTP
-  await page.getByRole('button', { name: 'Request OTP' }).click();
-  await page.waitForTimeout(500);
-  await page.getByRole('button', { name: 'Ok' }).click();
-  await page.waitForTimeout(500);
+  // //click Request OTP
+  // await page.getByRole('button', { name: 'Request OTP' }).click();
+  // await page.waitForTimeout(500);
+  // await page.getByRole('button', { name: 'Ok' }).click();
+  // await page.waitForTimeout(500);
 
 
   // // OTP * label
@@ -283,7 +283,7 @@ test("login page", async ({ page }) => {
   await page.waitForTimeout(500);
   await page.getByRole('textbox', { name: 'Password' }).click();
   await page.waitForTimeout(500);
-  await page.getByRole('textbox', { name: 'Password' }).fill("Test@1234");
+  await page.getByRole('textbox', { name: 'Password' }).fill("test@123");
   await page.waitForTimeout(500);
 
   //View button
@@ -297,9 +297,40 @@ test("login page", async ({ page }) => {
 
   //Click Home page
   const homepage = await page.getByRole('link', { name: 'Home' }).click();
-  await page.hover();
+  // await page.hover();
 
-  //for loap for paragraph
+  //EMIS angular login
+  const userid5 = await page.getByRole('textbox', { name: 'User Name' });
+  await page.waitForTimeout(500);
+  await page.getByRole('textbox', { name: 'User Name' }).click();
+  await page.waitForTimeout(500);
+  await page.getByRole('textbox', { name: 'User Name' }).fill("33020700907");
+
+
+  //password field
+  const password5 = await page.getByRole('textbox', { name: 'Password' });
+  await page.waitForTimeout(500);
+  await page.getByRole('textbox', { name: 'Password' }).click();
+  await page.waitForTimeout(500);
+  await page.getByRole('textbox', { name: 'Password' }).fill("test@123");
+  await page.waitForTimeout(500);
+
+
+  //login button
+  await page.getByRole('button', { name: 'Login' }).click();
+  await page.waitForTimeout(1000);
+
+  
+  //click the student
+  await page.getByRole('link', { name: 'Student ' }).click();
+  await page.waitForTimeout(500);
+  await page.getByRole('link', { name: 'KGBV Financial Tracker(React)' }).click();
+  await page.waitForTimeout(500);
+  await page.goto('https://emis-react-staging.tnsed.com//school/financial-tracker');
+  await page.waitForTimeout(500);
+
+
+  //for loop for paragraph
   const paragraphs = await page.$$('p');
 
   for (const p of paragraphs) {
