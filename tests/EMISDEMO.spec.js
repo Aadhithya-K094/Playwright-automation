@@ -57,7 +57,7 @@ test("login page", async ({ page }) => {
 
 
   //invalid password field
-  const password1 = await page.getByRole('textbox', { name: 'Password' });
+  const password1 = await   
   await password1.hover();
   await page.waitForTimeout(500);
   await page.getByRole('textbox', { name: 'Password' }).click();
