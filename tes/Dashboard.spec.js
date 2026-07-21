@@ -62,22 +62,57 @@ test("Dashboard page", async ({ page }) => {
     console.log("This is string:", await string1.textContent());
     await string1.screenshot({ path: 'D:/Playwright test file/tests/Screenshot' + Date.now() + 'string1.png' })
 
-// Locate all menu elements
-const menuLocator = page.locator('.menu-title');
+    // Locate all menu elements
+    const menuLocator = page.locator('.menu-title');
 
-// Count total menus
-const menuCount = await menuLocator.count();
+    // Count total menus
+    const menuCount = await menuLocator.count();
 
-console.log("Total Menus:", menuCount);
+    console.log("Total Menus:", menuCount);
 
-// Print each menu name
-for (let i = 0; i < menuCount; i++) {
-    const menuName = await menuLocator.nth(i).textContent();
-    console.log(`Menu ${i + 1}: ${menuName?.trim()}`);
-}
+    // Print each menu name
+    for (let i = 0; i < menuCount; i++) {
+        const menuName = await menuLocator.nth(i).textContent();
+        console.log(`Menu ${i + 1}: ${menuName?.trim()}`);
+    }
 
-await page.waitForTimeout(500);
-//close page
+    //menu navigate
+
+    await page.getByText('IFHRMS / Service Register').click();
+    await page.waitForTimeout(500);
+
+    await page.locator('a').filter({ hasText: 'Home' }).click();
+    await page.waitForTimeout(500);
+
+    await page.getByText('Component').click();
+    await page.waitForTimeout(500);
+
+    await page.getByText('demo1').click();
+    await page.waitForTimeout(500);
+
+    await page.getByText('Approvals').click();
+    await page.waitForTimeout(500);
+
+    await page.getByText('Reports').click();
+    await page.waitForTimeout(500);
+
+    await page.getByRole('link', { name: 'Reports' }).click();
+    await page.waitForTimeout(500);
+
+    await page.locator('a').filter({ hasText: 'dummy' }).click();
+    await page.waitForTimeout(500);
+
+    await page.getByText('EMIS Tickets').click();
+    await page.waitForTimeout(500);
+
+
+    //logout
+    await page.getByText('Saraswathi').click();
+    await page.waitForTimeout(500);
+    await page.getByRole('link', { name: ' Log Out' }).click();
+    await page.waitForTimeout(500);
+
+    //close page
     await page.close();
 
 
