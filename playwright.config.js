@@ -40,7 +40,7 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
 
-        screenshot: 'on',
+        screenshot: 'on-first-failure',
 
         video: {
           mode: 'on',
