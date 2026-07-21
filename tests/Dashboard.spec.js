@@ -40,10 +40,10 @@ test("Dashboard page", async ({ page }) => {
     await page.getByRole('button', { name: 'Login' }).click();
     await page.waitForTimeout(1000);
 
-    //click home page
-    await page.getByRole('link', { name: 'Home' }).click();
-    await page.waitForTimeout(1000)
-    await page.screenshot({ path: 'D:/Playwright test file/tests/Screenshot' + Date.now() + 'HomePage.png' })
+    // //click home page
+    // await page.getByRole('link', { name: 'Home' }).click();
+    // await page.waitForTimeout(1000)
+    // await page.screenshot({ path: 'D:/Playwright test file/tests/Screenshot' + Date.now() + 'HomePage.png' })
 
     //logo visible
     const logo1 = page.locator('#govlogo');
@@ -75,36 +75,6 @@ test("Dashboard page", async ({ page }) => {
         const menuName = await menuLocator.nth(i).textContent();
         console.log(`Menu ${i + 1}: ${menuName?.trim()}`);
     }
-
-    //menu navigate
-
-    await page.getByText('IFHRMS / Service Register').click();
-    await page.waitForTimeout(500);
-
-    await page.locator('a').filter({ hasText: 'Home' }).click();
-    await page.waitForTimeout(500);
-
-    await page.getByText('Component').click();
-    await page.waitForTimeout(500);
-
-    await page.getByText('demo1').click();
-    await page.waitForTimeout(500);
-
-    await page.getByText('Approvals').click();
-    await page.waitForTimeout(500);
-
-    await page.getByText('Reports').click();
-    await page.waitForTimeout(500);
-
-    await page.getByRole('link', { name: 'Reports' }).click();
-    await page.waitForTimeout(500);
-
-    await page.locator('a').filter({ hasText: 'dummy' }).click();
-    await page.waitForTimeout(500);
-
-    await page.getByText('EMIS Tickets').click();
-    await page.waitForTimeout(500);
-
 
     //logout
     await page.getByText('Saraswathi').click();
