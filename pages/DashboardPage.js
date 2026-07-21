@@ -1,7 +1,7 @@
 import { expect } from "@playwright/test";
 import { BasePage } from "./BasePage";
 
-exports.DashboardPage = class DashboardPage extends BasePage {
+class DashboardPage extends BasePage {
 
     constructor(page) {
 
@@ -98,3 +98,4 @@ exports.DashboardPage = class DashboardPage extends BasePage {
     }
 
 }
+module.exports = { DashboardPage };
