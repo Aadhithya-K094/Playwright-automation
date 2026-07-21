@@ -76,10 +76,10 @@ test("Forgot password", async ({ page }) => {
     console.log("This is placeholder:", placeholder7);
     await expect(placeholder7).toBeVisible();
 
-    //invalid OTP
+    //test OTP
     await page.getByRole('textbox', { name: 'Enter the OTP' }).click();
     await page.waitForTimeout(500);
-    await page.getByRole('textbox', { name: 'Enter the OTP' }).fill('854555');
+    await page.getByRole('textbox', { name: 'Enter the OTP' }).fill('8555555');
     await page.waitForTimeout(500);
     await page.getByLabel('OTP Submission').getByRole('button', { name: 'Submit OTP' }).click();
     await page.waitForTimeout(500);
@@ -89,30 +89,60 @@ test("Forgot password", async ({ page }) => {
     await page.getByRole('textbox', { name: 'Enter the OTP' }).fill('@@@@.....');
     await page.waitForTimeout(500);
     await page.getByLabel('OTP Submission').getByRole('button', { name: 'Submit OTP' }).click();
+    await page.waitForTimeout(15000);
+
+
+
+
+
+
+    //valid otp
+    await page.getByRole('textbox', { name: 'Enter the OTP' }).click();
+    await page.waitForTimeout(500);
+    await page.getByRole('textbox', { name: 'Enter the OTP' }).fill('');
+    await page.waitForTimeout(500);
+    await page.getByLabel('OTP Submission').getByRole('button', { name: 'Submit OTP' }).click();
     await page.waitForTimeout(500);
 
-    //close popup
-    await page.getByRole('button', { name: 'Close' }).click();
+
+    // //close popup
+    // await page.getByRole('button', { name: 'Close' }).click();
+    // await page.waitForTimeout(500);
+
+
+    //invalid password with space
+    await page.getByRole('textbox', { name: 'Enter the new password' }).click();
     await page.waitForTimeout(500);
+    await page.getByRole('textbox', { name: 'Enter the new password' }).fill('      ');
+    await page.waitForTimeout(500);
+    await page.locator('i').nth(3).click();
+    await page.waitForTimeout(500);
+    await page.locator('i').nth(4).click();
+    await page.waitForTimeout(500);
+    await page.getByRole('button', { name: 'Submit', exact: true }).click();
 
-    // // New Password * label
-    // const lable8 = await page.getByText('New Password *');
-    // console.log("This is placeholder:", lable8);
-    // await expect(lable8).toBeVisible('New Password *');
+    //invalid password without special haracters
+    await page.getByRole('textbox', { name: 'Enter the new password' }).click();
+    await page.waitForTimeout(500);
+    await page.getByRole('textbox', { name: 'Enter the new password' }).fill('test123');
+    await page.waitForTimeout(500);
+    await page.locator('i').nth(3).click();
+    await page.waitForTimeout(500);
+    await page.locator('i').nth(4).click();
+    await page.waitForTimeout(500);
+    await page.getByRole('button', { name: 'Submit', exact: true }).click();
 
-    // // fill the new password
-    // const placeholder8 = await page.getByRole('textbox', { name: 'Enter the new password' });
-    // console.log("This is placeholder:", placeholder8);
-    // await expect(placeholder8).toBeVisible('fill the new password');
-
-    // await page.getByRole('textbox', { name: 'Enter the new password' }).click();
-    // await page.waitForTimeout(500);
-    // await page.getByRole('textbox', { name: 'Enter the new password' }).fill('Test@1234');
-    // await page.waitForTimeout(500);
-    // await page.locator('i').nth(3).click();
-    // await page.waitForTimeout(500);
-    // await page.locator('i').nth(4).click();
-    // await page.waitForTimeout(500);
+    //valid password
+    await page.getByRole('textbox', { name: 'Enter the new password' }).click();
+    await page.waitForTimeout(500);
+    await page.getByRole('textbox', { name: 'Enter the new password' }).fill('Test@1234');
+    await page.waitForTimeout(500);
+    await page.locator('i').nth(3).click();
+    await page.waitForTimeout(500);
+    await page.locator('i').nth(4).click();
+    await page.waitForTimeout(500);
+    await page.screenshot({ path: 'D:/Playwright test file/tests/Screenshot' + Date.now() + 'newpassword.png' })
+    await page.getByRole('button', { name: 'Submit', exact: true }).click();
 
     // // Confirm password * label
     // const lable9 = await page.getByText('Confirm Password *');

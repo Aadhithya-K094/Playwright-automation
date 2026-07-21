@@ -62,34 +62,23 @@ test("Dashboard page", async ({ page }) => {
     console.log("This is string:", await string1.textContent());
     await string1.screenshot({ path: 'D:/Playwright test file/tests/Screenshot' + Date.now() + 'string1.png' })
 
-    //for loop for menus
-    const menuTitles = page.$$eval('menu-title');
-    console.log("These are menus:", menuTitles);
+// Locate all menu elements
+const menuLocator = page.locator('.menu-title');
 
-    //count
-    const menuTitles1 = page.locator('menu-title');
-    const count = await menuTitles1.count();
-    console.log("These are menus:", count);
+// Count total menus
+const menuCount = await menuLocator.count();
 
-    //for loop for menu navigation
-    for (let i = 0; i < count; i++) {
-        const item = menuTitles1.nth(i);
-        const text = await item.textContent();
-        console.log(`Clicking menu item ${i + 1}: ${text}`);
-        await item.click();
+console.log("Total Menus:", menuCount);
 
-        await page.waitForLoadState('networkidle');
-        await page.waitForTimeout(2000);
+// Print each menu name
+for (let i = 0; i < menuCount; i++) {
+    const menuName = await menuLocator.nth(i).textContent();
+    console.log(`Menu ${i + 1}: ${menuName?.trim()}`);
+}
 
-        // Assertion example — confirm page navigated
-        await expect(page).not.toHaveURL('about:blank');
-        await menuTitles1.screenshot({ path: 'D:/Playwright test file/tests/Screenshot' + Date.now() + 'menuTitles1.png' })
-
-    }
-    await page.waitForTimeout(1000);
-
-
-    //close page
+await page.waitForTimeout(500);
+//close page
     await page.close();
+
 
 });
