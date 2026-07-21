@@ -1,20 +1,17 @@
-import xlsx from "xlsx";
+module.exports={
 
-export function getUsersFromExcel() {
+url:"https://tnemis-staging.tnsed.com/auth/login?returnUrl=%2Fdashboard",
 
-    // Read Excel file
-    const workbook = xlsx.readFile("./testData/LoginData.xlsx");
+title:"EMIS | Tamil Nadu Schools",
 
-    // Read Sheet
-    const worksheet = workbook.Sheets["LoginData"];
+validUser:"4028609",
 
-    // Convert Excel to JSON
-    const users = xlsx.utils.sheet_to_json(worksheet);
+validPassword:"Test@123",
 
-    return users;
-}
+invalidUser:"jkdbfbjdsbvi",
 
-// Provide a compatible alias expected by tests
-export function getUsers() {
-    return getUsersFromExcel();
+invalidPassword:"dhhdsuivb",
+
+space:"   "
+
 }
