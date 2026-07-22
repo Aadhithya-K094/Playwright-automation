@@ -33,6 +33,7 @@ export class LoginPage extends BasePage {
 
     async gotoLoginPage(url) {
         await this.open(url);
+        await this.takeScreenshot("Login-page-opened");
     }
 
     async verifyLoginPage(url, title) {
@@ -56,6 +57,7 @@ export class LoginPage extends BasePage {
         await expect(heading).toBe("கல்வி மேலாண்மைத் தகவல் மையம்");
 
         await this.printLoginPageDetails();
+        await this.takeScreenshot("Login-page-verified");
     }
 
     async printLoginPageDetails() {
@@ -81,15 +83,20 @@ export class LoginPage extends BasePage {
     async login(username, password) {
 
         await this.fill(this.username, username);
+        await this.takeScreenshot("Login-username-filled");
 
         await this.fill(this.password, password);
+        await this.takeScreenshot("Login-password-filled");
 
         await this.click(this.eyeIcon);
+        await this.takeScreenshot("Login-password-visible");
 
         await Promise.all([
             this.page.waitForLoadState("networkidle"),
             this.loginButton.click()
         ]);
+
+        await this.takeScreenshot("Login-submitted");
 
     }
 

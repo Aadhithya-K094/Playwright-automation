@@ -44,4 +44,6 @@ test("Forgot Password Flow", async ({ page }) => {
 
     await forgot.goBackToLogin();
 
+    await forgot.takeScreenshot("ForgotPassword-test-passed");
+
 });

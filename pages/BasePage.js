@@ -63,15 +63,22 @@ export class BasePage {
 
     async takeScreenshot(name) {
         await this.page.screenshot({
-            path: `test-results/screenshots/${Date.now()}_${name}.png`,
+            path: `tests/Screenshot/${this.getScreenshotTimestamp()}_${name}.png`,
             fullPage: true
         });
     }
 
     async takeLocatorScreenshot(locator, name) {
         await locator.screenshot({
-            path: `test-results/screenshots/${Date.now()}_${name}.png`
+            path: `tests/Screenshot/${this.getScreenshotTimestamp()}_${name}.png`
         });
+    }
+
+    getScreenshotTimestamp() {
+        return new Date().toISOString()
+            .replace("T", "_")
+            .replace(/:/g, "-")
+            .replace("Z", "");
     }
 
     async logLocatorVisibility(name, locator) {

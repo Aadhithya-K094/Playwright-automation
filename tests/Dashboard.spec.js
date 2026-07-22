@@ -2,7 +2,7 @@ import { test } from "@playwright/test";
 import { DashboardPage } from "../pages/DashboardPage.js";
 import { loginData } from "../testData/DashBoardData.js";
 
-test("Dashboard Page", async ({ page }) => {
+test("Dashboard home page elements", async ({ page }) => {
 
     const dashboard = new DashboardPage(page);
 
@@ -19,6 +19,10 @@ test("Dashboard Page", async ({ page }) => {
 
     await dashboard.printMenus();
 
+    await dashboard.exerciseDashboardInteractions();
+
     await dashboard.logoutFromApplication();
+
+    await dashboard.takeScreenshot("Dashboard-test-passed");
 
 });

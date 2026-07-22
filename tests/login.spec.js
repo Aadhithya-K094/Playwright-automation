@@ -47,6 +47,19 @@ test("Valid User Invalid Password", async ({ page }) => {
 
 });
 
+test("InValid User Invalid Password", async ({ page }) => {
+
+    const login = new LoginPage(page);
+
+    await login.login(
+        loginData.invalidUser,
+        loginData.invalidPassword
+    );
+
+    await login.takeScreenshot("InvalidPassword");
+
+});
+
 test("Invalid User Valid Password", async ({ page }) => {
 
     const login = new LoginPage(page);

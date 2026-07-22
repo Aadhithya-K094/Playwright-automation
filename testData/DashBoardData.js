@@ -1,6 +1,6 @@
 export const loginData = {
 
-    url: "https://tnemis-staging.tnsed.com/auth/login?returnUrl=%2Fdashboard",
+    url: "https://tnemis-react-staging.tnsed.com/",
 
     username: "4028609",
 

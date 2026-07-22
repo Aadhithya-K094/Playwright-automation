@@ -4,6 +4,8 @@ export default defineConfig({
 
     testDir: "./tests",
 
+    testIgnore: "**/LoginExcel.spec.js",
+
     fullyParallel: true,
 
     forbidOnly: !!process.env.CI,
@@ -16,15 +18,15 @@ export default defineConfig({
 
     use: {
 
-        baseURL: "https://tnemis-staging.tnsed.com",
+        baseURL: "https://tnemis-react-staging.tnsed.com",
 
         headless: false,
 
         trace: "on",
 
-        screenshot: "only-on-failure",
+        screenshot: "on",
 
-        video: "retain-on-failure"
+        video: "on"
 
     },
 

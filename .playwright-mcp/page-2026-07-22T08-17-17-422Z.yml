@@ -1,0 +1,96 @@
+- generic [ref=f4e2]:
+  - generic [ref=f4e3]:
+    - banner [ref=f4e4]:
+      - generic [ref=f4e5]:
+        - img "Logo" [ref=f4e6]
+        - heading "TN EMIS" [level=2] [ref=f4e7]
+      - generic [ref=f4e8]:
+        - generic [ref=f4e9]:
+          - generic [ref=f4e10]: 
+          - generic [ref=f4e11]: "0"
+        - generic [ref=f4e19] [cursor=pointer]:
+          - generic [ref=f4e20]:
+            - text: Saraswathi
+            - generic [ref=f4e21]: 
+          - generic [ref=f4e22]: Active
+    - list [ref=f4e24]:
+      - listitem [ref=f4e25]:
+        - generic [ref=f4e26] [cursor=pointer]: IFHRMS / Service Register
+      - listitem [ref=f4e27]:
+        - generic [ref=f4e28] [cursor=pointer]: Home
+      - listitem [ref=f4e32]:
+        - generic [ref=f4e33] [cursor=pointer]: Component
+      - listitem [ref=f4e39]:
+        - generic [ref=f4e40] [cursor=pointer]: demo1
+      - listitem [ref=f4e44]:
+        - generic [ref=f4e45] [cursor=pointer]: Approvals
+      - listitem [ref=f4e51]:
+        - generic [ref=f4e52] [cursor=pointer]: Reports
+      - listitem [ref=f4e56]:
+        - generic [ref=f4e57] [cursor=pointer]: new menu
+      - listitem [ref=f4e63]:
+        - generic [ref=f4e64] [cursor=pointer]: EMIS Tickets
+      - listitem [ref=f4e68]:
+        - generic [ref=f4e69] [cursor=pointer]: Palli Paarvai
+      - listitem [ref=f4e72]:
+        - generic [ref=f4e73] [cursor=pointer]: dummy
+      - listitem [ref=f4e77]:
+        - generic [ref=f4e78] [cursor=pointer]: SMC Dashboard
+      - listitem [ref=f4e84]:
+        - generic [ref=f4e85] [cursor=pointer]: SLAS Assessment
+    - main [ref=f4e88]:
+      - generic [ref=f4e89]:
+        - generic [ref=f4e99]:
+          - generic [ref=f4e102]:
+            - generic [ref=f4e103]:
+              - generic [ref=f4e104]: Total Students
+              - img "Total Students" [ref=f4e105]
+            - generic [ref=f4e106]:
+              - heading "1,19,20,347" [level=4] [ref=f4e107]
+              - paragraph [ref=f4e108]:
+                - strong [ref=f4e109]: "Last Updated Date:"
+                - text: 22/07/2026
+            - list [ref=f4e110]:
+              - listitem [ref=f4e111]:
+                - generic [ref=f4e112]: Boys
+                - generic [ref=f4e113]: 60,77,193 (51.0%)
+              - listitem [ref=f4e114]:
+                - generic [ref=f4e115]: Girls
+                - generic [ref=f4e116]: 58,43,149 (49.0%)
+          - generic [ref=f4e119]:
+            - generic [ref=f4e120]:
+              - generic [ref=f4e121]: Total Schools
+              - img "Total Schools" [ref=f4e122]
+            - generic [ref=f4e123]:
+              - heading "59,280" [level=4] [ref=f4e124]
+              - paragraph [ref=f4e125]:
+                - strong [ref=f4e126]: "Last Updated Date:"
+                - text: 22/07/2026
+            - list [ref=f4e127]:
+              - listitem [ref=f4e128]:
+                - generic [ref=f4e129]: Government
+                - generic [ref=f4e130]: 37,623 (63.5%)
+              - listitem [ref=f4e131]:
+                - generic [ref=f4e132]: Others
+                - generic [ref=f4e133]: 21,657 (36.5%)
+          - generic [ref=f4e136]:
+            - generic [ref=f4e137]:
+              - generic [ref=f4e138]: Total Staff
+              - img "Total Staff" [ref=f4e139]
+            - generic [ref=f4e140]:
+              - heading "6,31,088" [level=4] [ref=f4e141]
+              - paragraph [ref=f4e142]:
+                - strong [ref=f4e143]: "Last Updated Date:"
+                - text: 22/07/2026
+            - list [ref=f4e144]:
+              - listitem [ref=f4e145]:
+                - generic [ref=f4e146]: Teaching
+                - generic [ref=f4e147]: 5,65,053 (89.5%)
+              - listitem [ref=f4e148]:
+                - generic [ref=f4e149]: Non Teaching
+                - generic [ref=f4e150]: 66,035 (10.5%)
+        - group [ref=f4e93]:
+          - button "Live Data" [active] [ref=f4e94] [cursor=pointer]
+          - button "Enrollment" [ref=f4e95] [cursor=pointer]
+    - contentinfo [ref=f4e98]
+  - region "Notifications Alt+T"

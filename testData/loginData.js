@@ -12,6 +12,10 @@ const loginData = {
 
     invalidPassword: "dhhdsuivb",
 
+    invalidUser: "33020700907",
+
+    invalidPassword: "test@123",
+
     space: "   "
 
 
