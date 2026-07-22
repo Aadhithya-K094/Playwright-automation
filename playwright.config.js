@@ -6,7 +6,7 @@ export default defineConfig({
 
     testIgnore: "**/LoginExcel.spec.js",
 
-    fullyParallel: true,
+    fullyParallel: false,
 
     forbidOnly: !!process.env.CI,
 
@@ -16,9 +16,9 @@ export default defineConfig({
 
     reporter: "html",
 
-    use: {
+    globalSetup: "./global-setup.js",
 
-        baseURL: "https://tnemis-react-staging.tnsed.com",
+    use: {
 
         headless: false,
 
@@ -26,33 +26,35 @@ export default defineConfig({
 
         screenshot: "on",
 
-        video: "on"
+        video: "on",
+
+        // Uncomment if global setup saves the login session
+        // storageState: "playwright/.auth/user.json"
 
     },
 
     projects: [
-
         {
-      name: "Mobile Chrome",
-      use: {
-        ...devices["Pixel 5"]}
-      },
+            name: "Mobile Chrome",
+            use: {
+                ...devices["Pixel 5"],
+            },
+        },
 
         // {
         //     name: "chromium",
-        //     use: { ...devices["Desktop Chrome"] }
+        //     use: { ...devices["Desktop Chrome"] },
         // },
 
         // {
         //     name: "firefox",
-        //     use: { ...devices["Desktop Firefox"] }
+        //     use: { ...devices["Desktop Firefox"] },
         // },
 
         // {
         //     name: "webkit",
-        //     use: { ...devices["Desktop Safari"] }
+        //     use: { ...devices["Desktop Safari"] },
         // }
-
     ]
 
 });
