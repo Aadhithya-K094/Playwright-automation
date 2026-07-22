@@ -2,7 +2,7 @@ import { test } from "@playwright/test";
 
 import { LoginPage } from "../pages/LoginPage";
 
-const data = require("../utils/testData");
+const data = require("../testData/testData");
 
 test.beforeEach(async ({ page }) => {
 
