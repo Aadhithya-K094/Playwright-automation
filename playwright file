@@ -1,0 +1,74 @@
+Why do we use Automation Testing?
+
+Automation Testing is the process of using software tools (such as Playwright, Selenium, or Cypress) to execute test cases automatically instead of manually.
+
+Benefits of Automation Testing
+Saves Time
+Executes tests much faster than manual testing.
+Hundreds of test cases can run automatically.
+Improves Accuracy
+Eliminates human errors caused by repetitive testing.
+Ensures the same steps are performed consistently every time.
+Supports Regression Testing
+Quickly verifies that new code changes have not broken existing functionality.
+Reusable Test Scripts
+Once written, scripts can be executed multiple times with minimal changes.
+Cross-Browser Testing
+Tests applications across Chrome, Firefox, Edge, and other supported browsers.
+CI/CD Integration
+Can run automatically whenever code is pushed to a repository using tools like GitHub Actions, Jenkins, or Azure DevOps.
+Detailed Reports
+Generates logs, screenshots, videos, and HTML reports to help identify failures.
+
+Why do we use Playwright?
+
+Playwright is a modern open-source automation framework developed by OpenAI? No—developed by Microsoft. It is used for automating web browsers and testing web applications.
+
+Advantages of Playwright
+1. Cross-Browser Support
+
+Playwright works with:
+
+Chromium (Google Chrome, Microsoft Edge)
+Firefox
+WebKit (Safari engine)
+2. Cross-Platform Support
+
+Runs on:
+
+Windows
+macOS
+Linux
+3. Multiple Programming Languages
+
+Supports:
+
+JavaScript
+TypeScript
+Python
+Java
+C#
+4. Fast Execution
+Faster than many traditional automation frameworks.
+Can execute tests in parallel.
+5. Auto Waiting
+
+Playwright automatically waits for elements to become ready before interacting with them, reducing the need for explicit waits.
+
+6. Multiple Tabs and Windows
+
+Handles multiple browser tabs and pop-up windows easily.
+
+7. API Testing
+
+Can send API requests directly using Playwright's request features.
+
+8. Built-in Features
+
+Includes:
+
+Screenshots
+Video recording
+Trace viewer
+HTML reports
+Network interception
