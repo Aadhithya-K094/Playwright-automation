@@ -1,11 +1,9 @@
-
 import { expect } from "@playwright/test";
-import { BasePage } from "./BasePage";
+import { BasePage } from "./BasePage.js";
 
-class ForgotPasswordPage extends BasePage {
+export class ForgotPasswordPage extends BasePage {
 
     constructor(page) {
-
         super(page);
 
         this.forgotPassword = page.getByRole("button", {
@@ -46,63 +44,45 @@ class ForgotPasswordPage extends BasePage {
         this.backToLogin = page.getByRole("button", {
             name: "Back To Login"
         });
+    }
 
+    async gotoLoginPage(url) {
+        await this.open(url);
     }
 
     async openForgotPassword() {
-
         await this.click(this.forgotPassword);
-
     }
 
     async verifyForgotPasswordPage() {
-
-        await expect(
-            this.page.getByText("Enter User Id")
-        ).toBeVisible();
-
+        await expect(this.page.getByText("Enter User Id")).toBeVisible();
         await expect(this.userId).toBeVisible();
-
     }
 
     async requestOTP(userId) {
-
         await this.fill(this.userId, userId);
-
         await this.takeScreenshot("UserID");
-
         await this.click(this.requestOtp);
-
     }
 
     async submitOTP(otp) {
-
         await this.fill(this.otp, otp);
-
         await this.click(this.submitOtp);
-
     }
 
     async resetPassword(password) {
-
         await this.fill(this.newPassword, password);
 
         await this.click(this.eye1);
-
         await this.click(this.eye2);
 
         await this.takeScreenshot("Password");
 
         await this.click(this.submit);
-
     }
 
     async goBackToLogin() {
-
         await this.click(this.backToLogin);
-
     }
 
 }
-
-module.exports = { ForgotPasswordPage };

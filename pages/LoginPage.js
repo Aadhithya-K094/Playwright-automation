@@ -1,7 +1,7 @@
-const { expect } = require("@playwright/test");
-const { BasePage } = require("./BasePage");
+import { expect } from "@playwright/test";
+import { BasePage } from "./BasePage.js";
 
-class LoginPage extends BasePage {
+export class LoginPage extends BasePage {
 
     constructor(page) {
 
@@ -29,85 +29,68 @@ class LoginPage extends BasePage {
         });
 
         this.eyeIcon = page.locator("i").first();
-
     }
 
     async gotoLoginPage(url) {
-
         await this.open(url);
-
     }
 
-    async verifyLoginPage(url,title){
+    async verifyLoginPage(url, title) {
 
         await expect(this.page).toHaveURL(url);
-        const currentUrl = this.page.url();
-        console.log(`The url is: ${currentUrl} verified`);
-
         await expect(this.page).toHaveTitle(title);
-        const currentTitle = await this.page.title();
-        console.log(`The title is: ${currentTitle} compare`);
 
         await expect(this.wrapper).toBeVisible();
-
         await expect(this.logo).toBeVisible();
-
         await expect(this.heading).toBeVisible();
 
-        const headingText = await this.heading.textContent();
-        const headingTrimmed = headingText.trim();
-        await expect(headingTrimmed).toBe("கல்வி மேலாண்மைத் தகவல் மையம்");
-        console.log(`The string is: ${headingTrimmed} verified`);
+        const currentUrl = this.page.url();
+        const currentTitle = await this.page.title();
+        const heading = (await this.heading.textContent()).trim();
+
+        console.log(`This is url: ${currentUrl}`);
+        console.log(`This is title: ${currentTitle}`);
+        console.log(`This is heading: ${heading}`);
+        await this.page.waitForTimeout(500);
+
+        await expect(heading).toBe("கல்வி மேலாண்மைத் தகவல் மையம்");
 
         await this.printLoginPageDetails();
-
     }
 
     async printLoginPageDetails() {
-        await this.logAttribute('username placeholder', this.username, 'placeholder');
-        await this.logAttribute('password placeholder', this.password, 'placeholder');
-        await this.logTextContent('username label', this.page.locator('label:has-text("User Name")').first());
-        await this.logTextContent('password label', this.page.locator('label:has-text("Password")').first());
-        await this.logLocatorVisibility('logo', this.logo);
-        await this.logLocatorVisibility('img', this.img);
-    }
 
-    async enterUsername(username){
+        await this.logAttribute("Username Placeholder", this.username, "placeholder");
 
-        await this.username.fill(username);
+        await this.logAttribute("Password Placeholder", this.password, "placeholder");
 
-    }
+        await this.logTextContent(
+            "Username Label",
+            this.page.locator('label:has-text("User Name")')
+        );
 
-    async enterPassword(password){
+        await this.logTextContent(
+            "Password Label",
+            this.page.locator('label:has-text("Password")')
+        );
 
-        await this.password.fill(password);
-
-    }
-
-    async clickEye(){
-
-        await this.eyeIcon.click();
+        await this.logLocatorVisibility("Logo", this.logo);
 
     }
 
-    async clickLogin(){
+    async login(username, password) {
 
-        await this.loginButton.click();
+        await this.fill(this.username, username);
 
-    }
+        await this.fill(this.password, password);
 
-    async login(username,password){
+        await this.click(this.eyeIcon);
 
-        await this.enterUsername(username);
-
-        await this.enterPassword(password);
-
-        await this.clickEye();
-
-        await this.clickLogin();
+        await Promise.all([
+            this.page.waitForLoadState("networkidle"),
+            this.loginButton.click()
+        ]);
 
     }
 
 }
-
-module.exports = { LoginPage };

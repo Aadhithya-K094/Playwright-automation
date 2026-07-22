@@ -1,23 +1,22 @@
-exports.loginData = [
+const loginData = {
 
-    {
-        username:"   ",
-        password:"test@123"
-    },
+    url: "https://tnemis-staging.tnsed.com/auth/login?returnUrl=%2Fdashboard",
 
-    {
-        username:"4028609",
-        password:"dhhdsuivb"
-    },
+    title: "EMIS | Tamil Nadu Schools",
 
-    {
-        username:"jkdbfbjdsbvi",
-        password:"test@123"
-    },
+    validUser: "4028609",
 
-    {
-        username:"4028609",
-        password:"Test@123"
-    }
+    validPassword: "Test@123",
 
-];
+    invalidUser: "jkdbfbjdsbvi",
+
+    invalidPassword: "dhhdsuivb",
+
+    space: "   "
+
+
+
+
+};
+
+export default loginData;

@@ -1,4 +1,4 @@
-module.exports = {
+const forgotPasswordData = {
 
     url: "https://tnemis-staging.tnsed.com/auth/login?returnUrl=%2Fdashboard",
 
@@ -8,7 +8,7 @@ module.exports = {
 
     invalidUser2: "4028609548494",
 
-    spaceUser: "      ",
+    spaceUser: "",
 
     invalidOtp1: "8555555",
 
@@ -16,10 +16,12 @@ module.exports = {
 
     validOtp: "",
 
-    invalidPassword1: "      ",
+    invalidPassword1: "",
 
     invalidPassword2: "test123",
 
     validPassword: "Test@1234"
 
 };
+
+export default forgotPasswordData;

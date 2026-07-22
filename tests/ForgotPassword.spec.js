@@ -1,14 +1,12 @@
 import { test } from "@playwright/test";
-
-import { ForgotPasswordPage } from "../pages/ForgotPasswordPage";
-
-const data = require("../testData/forgotPasswordData");
+import { ForgotPasswordPage } from "../pages/ForgotPasswordPage.js";
+import forgotPasswordData from "../testData/forgotPasswordData.js";
 
 test("Forgot Password Flow", async ({ page }) => {
 
     const forgot = new ForgotPasswordPage(page);
 
-    await forgot.open(data.url);
+    await forgot.gotoLoginPage(forgotPasswordData.url);
 
     await forgot.reloadPage();
 
@@ -16,31 +14,33 @@ test("Forgot Password Flow", async ({ page }) => {
 
     await forgot.verifyForgotPasswordPage();
 
-    // Invalid User ID
-    await forgot.requestOTP(data.invalidUser1);
+    // Invalid User IDs
+    await forgot.requestOTP(forgotPasswordData.invalidUser1);
 
-    await forgot.requestOTP(data.invalidUser2);
+    await forgot.requestOTP(forgotPasswordData.invalidUser2);
 
-    await forgot.requestOTP(data.spaceUser);
+    await forgot.requestOTP(forgotPasswordData.spaceUser);
 
     // Valid User ID
-    await forgot.requestOTP(data.validUser);
+    await forgot.requestOTP(forgotPasswordData.validUser);
 
     // Invalid OTP
-    await forgot.submitOTP(data.invalidOtp1);
+    await forgot.submitOTP(forgotPasswordData.invalidOtp1);
 
-    await forgot.submitOTP(data.invalidOtp2);
+    await forgot.submitOTP(forgotPasswordData.invalidOtp2);
 
     // Valid OTP
-    await forgot.submitOTP(data.validOtp);
+    // Enter manually if OTP comes via SMS/Email
+    // await forgot.submitOTP(forgotPasswordData.validOtp);
 
     // Invalid Password
-    await forgot.resetPassword(data.invalidPassword1);
+    await forgot.resetPassword(forgotPasswordData.invalidPassword1);
 
-    await forgot.resetPassword(data.invalidPassword2);
+    await forgot.resetPassword(forgotPasswordData.invalidPassword2);
 
     // Valid Password
-    await forgot.resetPassword(data.validPassword);
+    // Uncomment only if a valid OTP has been entered
+    // await forgot.resetPassword(forgotPasswordData.validPassword);
 
     await forgot.goBackToLogin();
 

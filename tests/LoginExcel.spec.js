@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { BasePage } from "../pages/BasePage.js";
+import { loginPage } from "../pages/LoginPage.js";
 import { getUsers } from "../testData/ExcelReader.js";
  
 const users = getUsers();
